@@ -5,10 +5,14 @@ from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
+from googleapiclient.discovery import build
 
 # If modifying these scopes, delete the file token.json.
 SCOPES = ["https://www.googleapis.com/auth/drive.metadata.readonly"]
+FOLDER_ID = "1AYkSBoEjWW7jq6OW94aB72Om9zYL_zFV" # Goodnotes folder
 
+# def download_file(service, file_id, file_name):
+  # request = service.files().get(file_id, acknowledgeAbuse=True, supportsAllDrives=False, )
 
 def main():
   creds = None
@@ -36,12 +40,18 @@ def main():
     service = build("drive", "v3", credentials=creds)
 
     # Call the Drive v3 API
+    # results = (
+    #     service.files()
+    #     .list(pageSize=50, fields="nextPageToken, files(id, name)")
+    #     .execute()
+    # )
     results = (
-        service.files()
-        .list(pageSize=50, fields="nextPageToken, files(id, name)")
-        .execute()
+      service.files()
+      .list(q=f"'{FOLDER_ID}' in parents")
+      .execute()
     )
     items = results.get("files", [])
+    # items = results.get(FOLDER_ID)
 
     if not items:
       print("No files found.")
