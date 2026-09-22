@@ -1,0 +1,14 @@
+__pycache__/
+*.py[cod]
+
+.venv/
+venv/
+
+credentials.json
+token.json
+.env
+.env.*
+
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
