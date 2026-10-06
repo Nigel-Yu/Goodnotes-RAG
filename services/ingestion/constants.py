@@ -1,4 +1,0 @@
-import os
-
-
-FOLDER_ID = os.getenv("GOODNOTES_FOLDER_ID", "1AYkSBoEjWW7jq6OW94aB72Om9zYL_zFV")
