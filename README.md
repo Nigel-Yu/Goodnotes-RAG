@@ -53,4 +53,7 @@ The ingestion package can also be run directly:
 .\.venv\Scripts\python.exe -m services.ingestion
 ```
 
+In VS Code, open **Run and Debug**, select **Run ingestion module**, and press the
+play button. This uses the module invocation so package-relative imports work.
+
 Do not run `services\ingestion\__main__.py` as a standalone file; package-relative imports require the module command above.
